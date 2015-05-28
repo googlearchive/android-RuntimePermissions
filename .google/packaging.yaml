@@ -1,0 +1,18 @@
+
+# GOOGLE SAMPLE PACKAGING DATA
+#
+# This file is used by Google as part of our samples packaging process.
+# End users may safely ignore this file. It has no relevance to other systems.
+---
+status:       DRAFT
+technologies: [Android]
+categories:   [System]
+languages:    [Java]
+solutions:    [Mobile]
+github:       android-RuntimePermissions
+level:        BEGINNER
+icon:         screenshots/big_icon.png
+apiRefs:
+    - android:android.app.Activity
+    - android:android.Manifest.permission
+license: apache2
