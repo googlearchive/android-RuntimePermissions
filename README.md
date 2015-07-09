@@ -17,6 +17,10 @@ or request the missing permissions. Permissions are checked through
 Activity#requestPermissions(String[], int) and Fragment#requestPermissions(String[], int).
 Permission requests are sent through Activity#requestPermissions(String[]), and the response
 received in the callback Activity#onRequestPermissionsResult(int, permissions[], int[]).
+Applications can provide an additional rational for the use of permissions after calling
+Activity#shouldShowRequestPermissionRationale(String). This call will return true if the
+application should provide the user with more context on why the requested permissions is needed,
+for example if the permission request has been denied before.
 
 If an application targets an SDK below M, all permissions are granted at runtime and are available
 when the application is running. However, if permissions have been turned off in the system settings
