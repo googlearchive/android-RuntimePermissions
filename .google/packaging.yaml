@@ -14,5 +14,6 @@ level:        BEGINNER
 icon:         screenshots/big_icon.png
 apiRefs:
     - android:android.app.Activity
+    - android:android.support.v4.app.ActivityCompat
     - android:android.Manifest.permission
 license: apache2
