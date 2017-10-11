@@ -16,13 +16,6 @@
 
 package com.example.android.system.runtimepermissions;
 
-import com.example.android.common.logger.Log;
-import com.example.android.common.logger.LogFragment;
-import com.example.android.common.logger.LogWrapper;
-import com.example.android.common.logger.MessageOnlyLogFilter;
-import com.example.android.system.runtimepermissions.camera.CameraPreviewFragment;
-import com.example.android.system.runtimepermissions.contacts.ContactsFragment;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -32,12 +25,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.ViewAnimator;
 
-import common.activities.SampleActivityBase;
+import com.example.android.system.runtimepermissions.camera.CameraPreviewFragment;
+import com.example.android.system.runtimepermissions.contacts.ContactsFragment;
 
 /**
  * Launcher Activity that demonstrates the use of runtime permissions for Android M.
@@ -80,7 +73,7 @@ import common.activities.SampleActivityBase;
  * <p>
  * (This class is based on the MainActivity used in the SimpleFragment sample template.)
  */
-public class MainActivity extends SampleActivityBase
+public class MainActivity extends AppCompatActivity
         implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     public static final String TAG = "MainActivity";
@@ -100,9 +93,6 @@ public class MainActivity extends SampleActivityBase
      */
     private static String[] PERMISSIONS_CONTACT = {Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS};
-
-    // Whether the Log Fragment is currently shown.
-    private boolean mLogShown;
 
     /**
      * Root of the layout of this Activity.
@@ -305,60 +295,6 @@ public class MainActivity extends SampleActivityBase
         }
     }
 
-    /* Note: Methods and definitions below are only used to provide the UI for this sample and are
-    not relevant for the execution of the runtime permissions API. */
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem logToggle = menu.findItem(R.id.menu_toggle_log);
-        logToggle.setVisible(findViewById(R.id.sample_output) instanceof ViewAnimator);
-        logToggle.setTitle(mLogShown ? R.string.sample_hide_log : R.string.sample_show_log);
-
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_toggle_log:
-                mLogShown = !mLogShown;
-                ViewAnimator output = (ViewAnimator) findViewById(R.id.sample_output);
-                if (mLogShown) {
-                    output.setDisplayedChild(1);
-                } else {
-                    output.setDisplayedChild(0);
-                }
-                supportInvalidateOptionsMenu();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    /** Create a chain of targets that will receive log data */
-    @Override
-    public void initializeLogging() {
-        // Wraps Android's native log framework.
-        LogWrapper logWrapper = new LogWrapper();
-        // Using Log, front-end to the logging chain, emulates android.util.log method signatures.
-        Log.setLogNode(logWrapper);
-
-        // Filter strips out everything except the message text.
-        MessageOnlyLogFilter msgFilter = new MessageOnlyLogFilter();
-        logWrapper.setNext(msgFilter);
-
-        // On screen logging via a fragment with a TextView.
-        LogFragment logFragment = (LogFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.log_fragment);
-        msgFilter.setNext(logFragment.getLogView());
-    }
-
     public void onBackClick(View view) {
         getSupportFragmentManager().popBackStack();
     }
@@ -368,16 +304,11 @@ public class MainActivity extends SampleActivityBase
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mLayout = findViewById(R.id.sample_main_layout);
-
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             RuntimePermissionsFragment fragment = new RuntimePermissionsFragment();
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
-
-        // This method sets up our custom logger, which will print all log messages to the device
-        // screen, as well as to adb logcat.
-        initializeLogging();
     }
 }

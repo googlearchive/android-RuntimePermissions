@@ -1,5 +1,5 @@
 <!--
-  Copyright 2015 The Android Open Source Project
+  Copyright 2017 The Android Open Source Project
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -15,13 +15,13 @@
   -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sample_main_layout"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ViewAnimator
-        android:id="@+id/sample_output"
+        android:id="@+id/sampleOutput"
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1">
@@ -50,7 +50,7 @@
         android:background="@android:color/darker_gray" />
 
     <FrameLayout
-        android:id="@+id/sample_content_fragment"
+        android:id="@+id/sampleContentFragment"
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="2" />

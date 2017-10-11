@@ -1,5 +1,5 @@
 <!--
- Copyright 2015 The Android Open Source Project
+ Copyright 2017 The Android Open Source Project
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -13,43 +13,36 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/contacts_layout"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:paddingBottom="@dimen/vertical_page_margin"
               android:paddingLeft="@dimen/horizontal_page_margin"
               android:paddingRight="@dimen/horizontal_page_margin"
-              android:paddingTop="@dimen/vertical_page_margin">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onBackClick"
-        android:text="@string/back" />
+              android:paddingTop="@dimen/vertical_page_margin"
+              tools:context=".RuntimePermissionsFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/contacts_intro" />
-
-    <TextView
-        android:id="@+id/contact_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="@string/main_introduction" />
 
     <Button
-        android:id="@+id/contact_add"
+        android:id="@+id/cameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_contact" />
+        android:onClick="showCamera"
+        android:text="@string/show_camera" />
+
 
     <Button
-        android:id="@+id/contact_load"
+        android:id="@+id/contactsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_contact" />
+        android:onClick="showContacts"
+        android:text="@string/show_contacts" />
 
 </LinearLayout>

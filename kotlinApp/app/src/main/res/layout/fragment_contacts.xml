@@ -1,5 +1,5 @@
 <!--
- Copyright 2015 The Android Open Source Project
+ Copyright 2017 The Android Open Source Project
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  limitations under the License.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/contacts_layout"
+              android:id="@+id/contactsLayout"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
@@ -36,18 +36,18 @@
         android:text="@string/contacts_intro" />
 
     <TextView
-        android:id="@+id/contact_message"
+        android:id="@+id/contactMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/contact_add"
+        android:id="@+id/contactAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_contact" />
 
     <Button
-        android:id="@+id/contact_load"
+        android:id="@+id/contactLoadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_contact" />
