@@ -1,6 +1,6 @@
 
-Android RuntimePermissions Sample
-===================================
+Android RuntimePermissions Sample (Kotlin)
+==========================================
 
 This sample shows runtime permissions available in Android M and above.
 It shows how to check and request permissions at runtime, handle backwards compatibility using the
@@ -11,17 +11,22 @@ Introduction
 
 Android M introduced runtime permissions. Applications targeting M and above need to request their
 permissions at runtime.
+
 All permissions still need to be declared in the AndroidManifest. However, when accessing APIs that
 require a permission, the Activity or Fragment has to verify that the permission has been granted
-or request the missing permissions using calls through the support library. Permissions are checked
-through  ActivityCompat#checkSelfPermission(Context, String) or
+or request the missing permissions using calls through the support library.
+
+Permissions are checked through `ActivityCompat#checkSelfPermission(Context, String)` or
 ContextCompat#checkSelfPermission(Context, String).
-Permission are requested through ActivityCompat#requestPermissions(Activity, String[], int), and the response
-received in a callback to  ActivityCompat.OnRequestPermissionsResultCallback#onRequestPermissionsResult(int, String[], int[]).
+
+Permission are requested through `ActivityCompat#requestPermissions(Activity, String[], int)`, and
+the response received in a callback to
+`ActivityCompat.OnRequestPermissionsResultCallback#onRequestPermissionsResult(int, String[], int[])`.
+
 Applications can provide an additional rational for the use of permissions after calling
-ActivityCompat#shouldShowRequestPermissionRationale(Activity,String). This call will return true if the
-application should provide the user with more context on why the requested permissions is needed,
-for example if the permission request has been denied before.
+`ActivityCompat#shouldShowRequestPermissionRationale(Activity,String)`. This call will return true
+if the application should provide the user with more context on why the requested permissions is
+needed, for example if the permission request has been denied before.
 
 If an application targets an SDK below M, all permissions are granted at runtime and are available
 when the application is running. The support library calls handle these checks appropriately.
@@ -31,14 +36,14 @@ for an application targeting an SDK below M, the API will return empty or no dat
 Pre-requisites
 --------------
 
-- Android SDK 27
-- Android Build Tools v27.0.2
+- Android SDK 26
 - Android Support Repository
 
 Screenshots
 -------------
 
-<img src="screenshots/screenshot-1.png" height="400" alt="Screenshot"/> <img src="screenshots/screenshot-2.png" height="400" alt="Screenshot"/> 
+<img src="screenshots/screenshot-1.png" height="400" alt="Screenshot"/>
+<img src="screenshots/screenshot-2.png" height="400" alt="Screenshot"/>
 
 Getting Started
 ---------------
